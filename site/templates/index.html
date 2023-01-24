@@ -18,31 +18,13 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 	<div style="width:100vw; height: 100vh" > 
-		<button id="gunshot_button" type="button" href="/play"  class="btn btn-danger content" width="50%" height="50%" style="width:50%; height:50%; font-size: 10vw">Gunshot</button>
+		<button id="gunshot_button" type="button" class="btn btn-danger content" style="width:50%; height:50%; font-size: 10vw">Gunshot</button>
 	</div>
 
-	<!--<script>
+	<script>
 			document.getElementById('gunshot_button').addEventListener('click', function(e) {
-				var connection_url = "{{url}}";
-				var connection_port = "{{port}}";
-				var websocket_protocol = "{{protocol}}";
-
-				var ws_url = websocket_protocol + "://" + connection_url + ":" + connection_port;
-
-				console.log(ws_url)
-	
-				var ws = new WebSocket(ws_url);
-	
-				ws.onopen = function () {
-					ws.send("{\"event\":\"gunshot\"}");
-					console.log("Message sent!");
-					ws.close();
-				}
-				
-				ws.onclose = function () {
-					console.log("Websocket closed!");
-				}
+				fetch({{url_for('play')}})
 			});
-		</script>-->
+		</script>
 </body>
 

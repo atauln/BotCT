@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def root():
-    return render_template('index.html', url=os.environ['CONN_URL'], port=os.environ['CONN_PORT'], protocol=os.environ['PROTOCOL'])
+    return render_template('index.html')
 
 @app.route('/play')
 async def play():
