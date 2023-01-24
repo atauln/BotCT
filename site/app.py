@@ -16,7 +16,9 @@ def play():
     url = os.environ['CONN_URL']
     port = os.environ['CONN_PORT']
 
-    ws = create_connection(f'{protocol}://{url}:{port}')
+    complete_url = f'{protocol}://{url}:{port}'
+
+    ws = create_connection(complete_url)
     ws.send('{"event":"gunshot"}')
     ws.close()
     return redirect('/')
