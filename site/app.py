@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, redirect
+from aioflask import Flask, render_template, redirect
 import os
 import asyncio
 import websockets
