@@ -1,8 +1,7 @@
 
-from aioflask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect
 import os
-import asyncio
-import websockets
+from websocket import create_connection
 
 
 app = Flask(__name__)
@@ -12,8 +11,12 @@ def root():
     return render_template('index.html')
 
 @app.route('/play')
-async def play():
-    async with websockets.connect('{os.environ["PROTOCOL"]}://{os.environ["CONN_URL"]}:{os.environ["CONN_PORT"]}') as websocket:
-        await websocket.send('{"event":"gunshot"}')
-        await websocket.close()
+def play():
+    protocol = os.environ['PROTOCOL']
+    url = os.environ['CONN_URL']
+    port = os.environ['CONN_PORT']
+
+    ws = create_connection(f'{protocol}://{url}:{port}')
+    ws.send('{"event":"gunshot"}')
+    ws.close()
     return redirect('/')
