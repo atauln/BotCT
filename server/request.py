@@ -14,8 +14,8 @@ async def handler(websocket):
         except websockets.ConnectionClosedOK:
             break
         match message['event']:
-            print("received message")
             case "gunshot":
+                print("received message")
                 song = AudioSegment.from_wav("gunshot.wav")
                 play(song)
 
