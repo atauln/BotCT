@@ -13,11 +13,9 @@ async def handler(websocket):
             message = json.loads(await websocket.recv())
         except websockets.ConnectionClosedOK:
             break
-        match message['event']:
-            case "gunshot":
-                print("received message")
-                song = AudioSegment.from_wav("gunshot.wav")
-                play(song)
+        print("received message")
+        song = AudioSegment.from_wav(f"aud/{message['event'}.wav")
+        play(song)
 
 
 async def main():

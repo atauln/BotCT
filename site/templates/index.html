@@ -14,17 +14,42 @@
 			-webkit-transform: translate(-50%, -50%);
 			transform: translate(-50%, -50%);
 		}
+		body {
+			background-color: black;
+		}
+		button {
+			text-align: center;
+			margin: 5px;
+		}
 	</style>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 	<div style="width:100vw; height: 100vh" > 
-		<button id="gunshot_button" type="button" class="btn btn-danger content" style="width:50%; height:50%; font-size: 10vw">Gunshot</button>
+		<div id="buttons" class="content" style="width:80%; height: 80%" >
+			<button id="gunshot_button" type="button" class="btn btn-danger" style="font-size: 10vw; width:100%; height:30%">Gunshot</button>
+			<button id="flatline_button" type="button" class="btn btn-danger" style="font-size: 5vw; width:48%; height:20%; display: inline-block; left: 0; position: absolute">Flatline</button>
+			<button id="revive_button" type="button" class="btn btn-success" style="font-size: 5vw; width:48%; height:20%; display: inline-block; right: 0; position: absolute; margin-right: 0px">Revive</button>
+			<button id="reveal_button" type="button" class="btn btn-info" style="font-size: 5vw; width:48%; height:20%; display: inline-block; left: 0; position: absolute">Reveal</button>	
+			<button id="reveal_meme_button" type="button" class="btn btn-secondary" style="font-size: 5vw; width:48%; height:20%; display: inline-block; left: 0; position: absolute; margin-right: 0px">Meme Reveal</button>
+		</div>
 	</div>
 
 	<script>
 			document.getElementById('gunshot_button').addEventListener('click', function(e) {
-				fetch("{{url_for('play')}}")
+				fetch("{{url_for('play', event='gunshot')}}");
 			});
+
+			document.getElementById('flatline_button').addEventListener('click', function(e) {
+				fetch("{{url_for('play', event='flatline')}}");
+			});
+
+			document.getElementById('reveal_button').addEventListener('click', function(e) {
+				fetch("{{url_for('play', event='reveal')}}");
+			});
+			document.getElementById('reveal_meme_button').addEventListener('click', function(e) {
+				fetch("{{url_for('play', event='reveal_meme')}}");
+			});
+
 		</script>
 </body>
 
